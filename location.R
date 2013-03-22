@@ -4,21 +4,21 @@
 #visualization possibility
 
 #load all packages
-load("~/Desktop/TwitterCred.rda")
 library(ROAuth)
 library(twitteR)
 library(googleVis)
 
 #tackle OAuth
+#object has to be manually loaded into R
+load("~/Desktop/TwitterCred.rda")
 registerTwitterOAuth(.TwitterCred)
 
 
 #grab Twitter Trends of a given location
+#get all available locations for searching trends
+availablelocations = availableTrendLocations()
 
-
-locTrend = function(location){
-  #get all available locations for searching trends
-  avail.loc = availableTrendLocations()
+locTrend = function(location, avail.loc){
   if (location %in% avail.loc$name) loc.found = TRUE else loc.found = FALSE
   if (loc.found)
   {
@@ -37,7 +37,11 @@ locTrend = function(location){
                  chart, '<font size="6">Find them on Twitter:</font><br>',
                  link, "</div>", sep = "\n")
   tweets = getTweets(trend$name)
-  page = paste(trendtb$html$header, topics, tweets,trendtb$html$footer, sep = "\n")
+  twtext = paste("<t>", tweets$text, "</t>", sep = "", collapse="<br><br>\n")
+  twtext = paste('<div id="column1" style="float:right; margin:0; width:50%;">', 
+                 "<font size='4'>", '<t>Tweets:</t><br>', twtext, '</font></div>',
+                 sep = "\n")
+  page = paste(trendtb$html$header, topics, twtext, trendtb$html$footer, sep = "\n")
   cat(page, file = "~/Downloads/Trends.html")
   }
   else{
@@ -48,7 +52,9 @@ locTrend = function(location){
 getTweets = function(keywords)
 {
   tweets = lapply(keywords, function(x)searchTwitter(x, n = 1, lang = "en"))
-  
+  tweets = lapply(unlist(tweets), as.data.frame)
+  tweets = do.call("rbind", tweets)
+  tweets
 }
 
 
