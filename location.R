@@ -41,8 +41,9 @@ locTrend = function(location, avail.loc){
   twtext = paste('<div id="column1" style="float:right; margin:0; width:50%;">', 
                  "<font size='4'>", '<t>Tweets:</t><br>', twtext, '</font></div>',
                  sep = "\n")
-  page = paste(trendtb$html$header, topics, twtext, trendtb$html$footer, sep = "\n")
-  cat(page, file = "~/Downloads/Trends.html")
+  page = paste(trendtb$html$header, '<font size="6">Local Twitter Trends</font><br>', 
+               topics, twtext, trendtb$html$footer, sep = "\n")
+  cat(page, file = paste("./", location,"_Trends.html", sep = ""))
   }
   else{
     stop("location not available for trends")
