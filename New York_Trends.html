@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Trends</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <style type="text/css">
+    body {
+          color: #444444;
+          font-family: Arial,Helvetica,sans-serif;
+          font-size: 75%;
+    }
+    a {
+          color: #4D87C7;
+          text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<font size="6">Local Twitter Trends</font><br>
+<div id="contentBox" style="margin:0px auto; width:100%">
+<div id="column1" style="float:left; margin:0; width:50%;">
+<!-- Table generated in R 2.15.3 by googleVis 0.4.2 package -->
+<!-- Fri Mar 22 21:58:52 2013 -->
+
+
+<!-- jsHeader -->
+<script type="text/javascript">
+
+
+// jsData 
+function gvisDataTrends () {
+  var data = new google.visualization.DataTable();
+  var datajson =
+[
+ [
+ "New York",
+"#USAvCRC" 
+],
+[
+ "New York",
+"Western Kentucky" 
+],
+[
+ "New York",
+"#USMNT" 
+],
+[
+ "New York",
+"#RetroMTV" 
+],
+[
+ "New York",
+"#UCLA" 
+],
+[
+ "New York",
+"#Kansas" 
+],
+[
+ "New York",
+"Costa Rica" 
+],
+[
+ "New York",
+"Trevor Ariza" 
+],
+[
+ "New York",
+"My Chemical Romance" 
+],
+[
+ "New York",
+"John Wall" 
+] 
+];
+data.addColumn('string','location');
+data.addColumn('string','name');
+data.addRows(datajson);
+return(data);
+}
+
+
+// jsDrawChart
+function drawChartTrends() {
+  var data = gvisDataTrends();
+  var options = {};
+options["allowHtml"] = true;
+options["height"] =    250;
+
+     var chart = new google.visualization.Table(
+       document.getElementById('Trends')
+     );
+     chart.draw(data,options);
+    
+
+}
+  
+
+
+// jsDisplayChart
+(function() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  var chartid = "table";
+
+  // Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+  var i, newPackage = true;
+  for (i = 0; newPackage && i < pkgs.length; i++) {
+    if (pkgs[i] === chartid)
+      newPackage = false;
+  }
+  if (newPackage)
+    pkgs.push(chartid);
+
+  // Add the drawChart function to the global list of callbacks
+  callbacks.push(drawChartTrends);
+})();
+function displayChartTrends() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+    var pkgCount = pkgs.length;
+    google.load("visualization", "1", { packages:pkgs, callback: function() {
+      if (pkgCount != pkgs.length) {
+        // Race condition where another setTimeout call snuck in after us; if
+        // that call added a package, we must not shift its callback
+        return;
+      }
+      while (callbacks.length > 0)
+        callbacks.shift()();
+    } });
+  }, 100);
+}
+
+
+// jsFooter
+ </script>
+
+
+<!-- jsChart -->  
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTrends"></script>
+
+
+<!-- divChart -->
+  
+<div id="Trends"
+  style="width: 600px; height: 250px;">
+</div>
+
+<font size="6">Find them on Twitter:</font><br>
+<font size = "4">
+<a href=http://twitter.com/search?q=%23USAvCRC>#USAvCRC</a><br>
+<a href=http://twitter.com/search?q=%22Western+Kentucky%22>Western Kentucky</a><br>
+<a href=http://twitter.com/search?q=%23USMNT>#USMNT</a><br>
+<a href=http://twitter.com/search?q=%23RetroMTV>#RetroMTV</a><br>
+<a href=http://twitter.com/search?q=%23UCLA>#UCLA</a><br>
+<a href=http://twitter.com/search?q=%23Kansas>#Kansas</a><br>
+<a href=http://twitter.com/search?q=%22Costa+Rica%22>Costa Rica</a><br>
+<a href=http://twitter.com/search?q=%22Trevor+Ariza%22>Trevor Ariza</a><br>
+<a href=http://twitter.com/search?q=%22My+Chemical+Romance%22>My Chemical Romance</a><br>
+<a href=http://twitter.com/search?q=%22John+Wall%22>John Wall</a><br>
+</font>
+</div>
+<div id="column1" style="float:right; margin:0; width:50%;">
+<font size='4'>
+<t>Tweets:</t><br>
+<t>RT @BestSoccerShow: Wrapping up tonight's Post-Game show soon, get your calls in, 201-430-2378 http://t.co/ISHmN8A03N #USMNT #USAvCRC</t><br><br>
+<t>@naattylight im gunna go take a wild guess &amp; say in the western part of Kentucky. anyway, mizzou is at home! #suckstofuckingsuck #rcjh</t><br><br>
+<t>RT @soccerdotcom: Back on track! #USMNT http://t.co/aJY0XmFCk8</t><br><br>
+<t>He's smoking a cigarette in the house! #RealWorld #RetroMTV</t><br><br>
+<t>#UCLA lose 2nd round, out! #marchmadness #NCAA</t><br><br>
+<t>GREAT wins by #SDSU &amp; #Kansas. Thanks for not letting me down.</t><br><br>
+<t>U.S. men's team gets much-needed victory over Costa Rica:  http://t.co/cclkNX7S8w</t><br><br>
+<t>Trevor Ariza drops 25 on his old team. As Wizards stun LA after a 20 point lead. Ima be on ESPN someday.</t><br><br>
+<t>RT @CrystalCries: "My Chemical Romance have broken up" http://t.co/qoBRaL2VLu</t><br><br>
+<t>RT @CrisStayKoolin: John Wall a Star In The Making, Balled Out Against Kobe</t>
+</font></div>
+
+<!-- htmlFooter -->
+<span> 
+R version 2.15.3 (2013-03-01) &#8226; <a href="http://code.google.com/p/google-motion-charts-with-r/">googleVis-0.4.2</a>
+&#8226; <a href="https://developers.google.com/terms/">Google Terms of Use</a> &#8226; <a href="https://google-developers.appspot.com/chart/interactive/docs/gallery/table.html#Data_Policy">Data Policy</a>
+</span></div>
+</body>
+</html>
