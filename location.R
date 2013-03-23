@@ -15,7 +15,7 @@ registerTwitterOAuth(.TwitterCred)
 
 
 #grab Twitter Trends of a given location
-locTrend = function(location, avail.loc = availableTrendLocations()){
+locTrend = function(location, avail.loc = availableTrendLocations(),path = "./"){
   if (location %in% avail.loc$name) loc.found = TRUE else loc.found = FALSE
   if (loc.found)
   {
@@ -40,7 +40,7 @@ locTrend = function(location, avail.loc = availableTrendLocations()){
                  sep = "\n")
   page = paste(trendtb$html$header, '<font size="6">Local Twitter Trends</font><br>', 
                topics, twtext, trendtb$html$footer, sep = "\n")
-  cat(page, file = paste("./", location,"_Trends.html", sep = ""))
+  cat(page, file = paste(path, location,"_Trends.html", sep = ""))
   }
   else{
     stop("location not available for trends")
