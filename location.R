@@ -15,10 +15,7 @@ registerTwitterOAuth(.TwitterCred)
 
 
 #grab Twitter Trends of a given location
-#get all available locations for searching trends
-availablelocations = availableTrendLocations()
-
-locTrend = function(location, avail.loc){
+locTrend = function(location, avail.loc = availableTrendLocations()){
   if (location %in% avail.loc$name) loc.found = TRUE else loc.found = FALSE
   if (loc.found)
   {
