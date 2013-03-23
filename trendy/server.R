@@ -54,7 +54,7 @@ shinyServer(function(input, output){
     sources <- sapply(sources, function(x) ifelse(length(x) > 1, x[2], x[1]))
     sources <- table(sources)
     sources <- data.frame(source = names(sources), count = sources)
-    gvisPieChart(sources, labelvar="source", numvar="count",options=list(height = 200))
+    gvisPieChart(sources, labelvar="source", numvar="count")
   })
   
 })
